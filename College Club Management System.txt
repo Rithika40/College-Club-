@@ -1,0 +1,33 @@
+Prompt
+
+Title
+
+you are a software analyst working with a college project team list the main features required for a simple college club management system.The user of the system are user 1 and user2 . keep it to 6 features one line each simple english no code give the answer as a numbered list.
+
+Chagpt
+
+1. User login and account management.
+2. Create and manage college clubs.
+3. Add and manage club members.
+4. Plan and manage club events.
+5. Track event registrations and attendance.
+6. View club activities and reports.
+
+Gemini
+
+1. **User Authentication:** User 1 and User 2 can register, log in securely, and manage their profile details.
+2. **Club Management:** User 1 can create and manage club details, while User 2 can browse and join different clubs.
+3. **Event Scheduling:** User 1 can post new club events, while User 2 can view event details and register to attend.
+4. **Attendance Tracking:** User 1 can record event attendance, while User 2 can view their personal event participation history.
+5. **Announcements System:** User 1 can broadcast club updates, while User 2 can view notifications on their dashboard.
+6. **Feedback & Inquiries:** User 2 can submit feedback or questions, while User 1 can review and respond to them.
+
+
+Claude AI
+
+1. Member Registration – add, update, and view club member details.
+2. Club/Event Creation – create clubs or events with basic details like name, date, and description.
+3. Event Registration – allow users to sign up for events or club activities.
+4. Attendance Tracking – mark and view attendance for meetings or events.
+5. Notice/Announcement Board – post and view important updates or announcements.
+6. User Login System – simple login for User1 and User2 to access the system securely.

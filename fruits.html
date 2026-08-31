@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Basket 🍎🥦</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Nunito",sans-serif;
+    background:#f7fff7;
+    color:#263d2b;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(15px);
+    box-shadow:0 5px 20px rgba(38,100,50,.10);
+}
+
+.navbar{
+    max-width:1300px;
+    width:92%;
+    margin:auto;
+    min-height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:900;
+    color:#218739;
+}
+
+.logo span{
+    color:#f29b24;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#294b31;
+    font-weight:700;
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:3px;
+    background:#42a852;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-actions{
+    display:flex;
+    gap:8px;
+}
+
+.icon-btn{
+    border:0;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#e9f8e9;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+.icon-btn:hover{
+    transform:translateY(-4px) scale(1.05);
+    background:#d5f1d5;
+}
+
+#menuBtn{
+    display:none;
+}
+
+/* HERO */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+    linear-gradient(
+        rgba(240,255,240,.72),
+        rgba(247,255,247,.82)
+    ),
+    url("https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=1800&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:#e1f7e3;
+    color:#25863a;
+    padding:9px 18px;
+    border-radius:30px;
+    font-weight:800;
+    margin-bottom:18px;
+    animation:fadeUp 1s ease;
+}
+
+.hero h1{
+    max-width:700px;
+    font-size:clamp(45px,7vw,82px);
+    line-height:1;
+    color:#207a32;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero h1 span{
+    color:#f19b24;
+}
+
+.hero p{
+    max-width:620px;
+    margin:25px 0;
+    color:#58715d;
+    font-size:17px;
+    line-height:1.8;
+    animation:fadeUp 1.4s ease;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+    padding:14px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:900;
+    transition:.35s;
+}
+
+.primary{
+    background:#26933c;
+    color:white;
+    box-shadow:0 10px 25px rgba(38,147,60,.22);
+}
+
+.secondary{
+    background:white;
+    color:#26823a;
+    border:2px solid #b8ddb9;
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+.floating{
+    position:absolute;
+    font-size:38px;
+    animation:float 5s ease-in-out infinite;
+}
+
+.f1{right:13%;top:20%}
+.f2{right:25%;bottom:20%;animation-delay:1s}
+.f3{left:7%;bottom:13%;animation-delay:2s}
+.f4{right:7%;bottom:35%;animation-delay:3s}
+
+@keyframes float{
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-25px) rotate(8deg)}
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* GENERAL */
+
+.section{
+    width:92%;
+    max-width:1300px;
+    margin:90px auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title small{
+    color:#ef971e;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.section-title h2{
+    font-size:43px;
+    color:#287d39;
+    margin:8px 0;
+}
+
+.section-title p{
+    color:#718276;
+}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.feature{
+    padding:28px 20px;
+    text-align:center;
+    background:white;
+    border:1px solid #dceedd;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(50,120,60,.07);
+    transition:.4s;
+}
+
+.feature:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 35px rgba(50,120,60,.14);
+}
+
+.feature-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#e5f7e7;
+    font-size:30px;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.1);
+    }
+}
+
+.feature h3{
+    color:#28783a;
+    margin-bottom:8px;
+}
+
+.feature p{
+    color:#78877b;
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* FILTER */
+
+.filter-box{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.filter{
+    padding:10px 18px;
+    border:1px solid #c7e5ca;
+    background:white;
+    border-radius:25px;
+    cursor:pointer;
+    color:#337340;
+    font-weight:800;
+    transition:.3s;
+}
+
+.filter:hover,
+.filter.active{
+    background:#29923f;
+    color:white;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+
+.product{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid #dceedd;
+    box-shadow:0 10px 25px rgba(40,110,50,.08);
+    transition:.4s;
+    position:relative;
+}
+
+.product:hover{
+    transform:translateY(-10px);
+    box-shadow:0 22px 40px rgba(40,110,50,.16);
+}
+
+.product-image{
+    height:220px;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.product:hover img{
+    transform:scale(1.12);
+}
+
+.wishlist{
+    position:absolute;
+    right:12px;
+    top:12px;
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:50%;
+    background:white;
+    cursor:pointer;
+    font-size:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.product-content{
+    padding:20px;
+}
+
+.product-content h3{
+    color:#28783a;
+    font-size:19px;
+}
+
+.description{
+    color:#829084;
+    font-size:12px;
+    margin:7px 0;
+    min-height:38px;
+}
+
+.rating{
+    color:#f3a51e;
+    font-size:13px;
+}
+
+.price{
+    color:#ed9219;
+    font-size:21px;
+    font-weight:900;
+    margin:8px 0;
+}
+
+.quantity{
+    width:100%;
+    padding:9px;
+    border:1px solid #d4e8d5;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+.cart-btn{
+    width:100%;
+    padding:11px;
+    border:0;
+    border-radius:12px;
+    background:#29923f;
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.cart-btn:hover{
+    background:#1f7833;
+    transform:scale(1.02);
+}
+
+/* CATEGORIES */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.category{
+    height:260px;
+    border-radius:28px;
+    overflow:hidden;
+    position:relative;
+    cursor:pointer;
+}
+
+.category img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.category:hover img{
+    transform:scale(1.12);
+}
+
+.category-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:flex-end;
+    padding:25px;
+    background:linear-gradient(
+        transparent,
+        rgba(0,50,15,.75)
+    );
+    color:white;
+}
+
+.category-overlay h3{
+    font-size:25px;
+}
+
+/* OFFER */
+
+.offer{
+    width:92%;
+    max-width:1300px;
+    margin:90px auto;
+    min-height:330px;
+    border-radius:35px;
+    padding:50px;
+    display:flex;
+    align-items:center;
+    background:
+    linear-gradient(
+        90deg,
+        rgba(25,115,43,.93),
+        rgba(43,145,63,.78)
+    ),
+    url("https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1600&q=90");
+    background-size:cover;
+    color:white;
+    overflow:hidden;
+}
+
+.offer-content{
+    max-width:600px;
+}
+
+.offer h2{
+    font-size:48px;
+}
+
+.offer p{
+    margin:12px 0 20px;
+    line-height:1.7;
+}
+
+.countdown{
+    display:flex;
+    gap:12px;
+    margin:20px 0;
+}
+
+.time{
+    background:rgba(255,255,255,.2);
+    backdrop-filter:blur(8px);
+    padding:12px 18px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.time strong{
+    display:block;
+    font-size:25px;
+}
+
+.time span{
+    font-size:10px;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-image{
+    border-radius:35px;
+    overflow:hidden;
+    height:430px;
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.about-content h2{
+    color:#287d39;
+    font-size:45px;
+}
+
+.about-content p{
+    color:#6e7e72;
+    line-height:1.8;
+    margin:15px 0;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:25px;
+}
+
+.stat{
+    background:#eff9ef;
+    border-radius:18px;
+    padding:17px 8px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:24px;
+    color:#25873a;
+}
+
+.stat span{
+    font-size:11px;
+    color:#758379;
+}
+
+/* HOW IT WORKS */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.step{
+    text-align:center;
+    position:relative;
+}
+
+.step-icon{
+    width:75px;
+    height:75px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#e5f6e6;
+    font-size:32px;
+    animation:pulse 2.5s infinite;
+}
+
+.step h3{
+    margin-top:15px;
+    color:#287d39;
+}
+
+.step p{
+    font-size:13px;
+    color:#78857b;
+    margin-top:7px;
+}
+
+/* REVIEWS */
+
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.review{
+    background:white;
+    padding:28px;
+    border-radius:25px;
+    border:1px solid #dceedd;
+    box-shadow:0 10px 25px rgba(40,110,50,.07);
+    transition:.4s;
+}
+
+.review:hover{
+    transform:translateY(-8px);
+}
+
+.review-top{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.avatar{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#e3f5e4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+.review h3{
+    color:#28783a;
+}
+
+.review-stars{
+    color:#f0a01e;
+}
+
+.review p{
+    color:#708074;
+    line-height:1.7;
+    font-size:13px;
+    margin-top:15px;
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+    width:92%;
+    max-width:1000px;
+    margin:90px auto;
+    padding:55px;
+    border-radius:35px;
+    text-align:center;
+    background:
+    linear-gradient(
+        135deg,
+        #23863a,
+        #51af58
+    );
+    color:white;
+}
+
+.newsletter h2{
+    font-size:40px;
+}
+
+.newsletter p{
+    margin:10px 0 25px;
+}
+
+.newsletter-form{
+    max-width:600px;
+    margin:auto;
+    display:flex;
+    gap:10px;
+}
+
+.newsletter-form input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:15px 20px;
+    border-radius:30px;
+}
+
+.newsletter-form button{
+    border:0;
+    padding:15px 25px;
+    border-radius:30px;
+    background:#f3a01d;
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* CONTACT */
+
+.contact{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.contact-card,
+.contact-form{
+    background:white;
+    border:1px solid #dceedd;
+    border-radius:28px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(40,110,50,.07);
+}
+
+.contact-card h3,
+.contact-form h3{
+    color:#287d39;
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.contact-item{
+    margin:17px 0;
+    color:#718078;
+}
+
+.contact-item strong{
+    color:#28783a;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #d6e8d7;
+    border-radius:12px;
+    margin-bottom:12px;
+    outline:none;
+    font-family:inherit;
+}
+
+.contact-form textarea{
+    height:130px;
+    resize:none;
+}
+
+/* FOOTER */
+
+footer{
+    background:#163d20;
+    color:white;
+    padding:60px 5% 25px;
+}
+
+.footer-grid{
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:35px;
+}
+
+footer h2{
+    color:#80d487;
+}
+
+footer h3{
+    margin-bottom:15px;
+    color:#f1a12a;
+}
+
+footer p,
+footer li{
+    color:#b8cbbd;
+    font-size:13px;
+    line-height:2;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer a{
+    color:#b8cbbd;
+}
+
+.footer-bottom{
+    max-width:1300px;
+    margin:35px auto 0;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.1);
+    text-align:center;
+    color:#aabdae;
+    font-size:12px;
+}
+
+/* CART */
+
+.cart-panel{
+    position:fixed;
+    top:0;
+    right:-420px;
+    width:390px;
+    max-width:90%;
+    height:100vh;
+    background:white;
+    z-index:3000;
+    box-shadow:-10px 0 35px rgba(0,0,0,.15);
+    padding:25px;
+    transition:.4s;
+    overflow-y:auto;
+}
+
+.cart-panel.open{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.close-cart{
+    border:0;
+    background:#edf8ed;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.cart-item{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid #e6eee6;
+}
+
+.cart-item img{
+    width:60px;
+    height:60px;
+    border-radius:12px;
+    object-fit:cover;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info h4{
+    color:#28783a;
+}
+
+.cart-item-info p{
+    font-size:12px;
+    color:#748177;
+}
+
+.remove-item{
+    border:0;
+    background:#fff0f0;
+    color:#d33;
+    border-radius:8px;
+    padding:6px;
+    cursor:pointer;
+}
+
+.cart-total{
+    margin-top:25px;
+    padding-top:20px;
+    border-top:2px solid #dceedd;
+}
+
+.total-row{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+.total-row.grand{
+    font-size:22px;
+    font-weight:900;
+    color:#23843a;
+}
+
+.checkout{
+    width:100%;
+    margin-top:15px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translateX(-50%);
+    z-index:9999;
+    background:#247f38;
+    color:white;
+    padding:13px 22px;
+    border-radius:30px;
+    font-weight:800;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    animation:toastIn .4s ease;
+}
+
+@keyframes toastIn{
+    from{
+        opacity:0;
+        transform:translate(-50%,20px);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
+}
+
+/* BACK TOP */
+
+#backTop{
+    position:fixed;
+    right:22px;
+    bottom:25px;
+    width:48px;
+    height:48px;
+    border:0;
+    border-radius:50%;
+    background:#26903c;
+    color:white;
+    cursor:pointer;
+    z-index:2000;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    font-size:20px;
+}
+
+#backTop.show{
+    opacity:1;
+    visibility:visible;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .features{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .steps{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:750px){
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:75px;
+        left:0;
+        width:100%;
+        background:white;
+        padding:20px;
+        flex-direction:column;
+        text-align:center;
+        box-shadow:0 10px 20px rgba(0,0,0,.1);
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    #menuBtn{
+        display:block;
+    }
+
+    .nav-actions{
+        margin-left:auto;
+    }
+
+    .categories,
+    .about,
+    .contact{
+        grid-template-columns:1fr;
+    }
+
+    .reviews{
+        grid-template-columns:1fr;
+    }
+
+    .offer{
+        padding:35px 25px;
+    }
+
+    .offer h2{
+        font-size:38px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:520px){
+
+    .products,
+    .features,
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:600px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .newsletter{
+        padding:35px 20px;
+    }
+
+    .newsletter h2{
+        font-size:30px;
+    }
+
+    .newsletter-form{
+        flex-direction:column;
+    }
+
+    .newsletter-form button{
+        width:100%;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .countdown{
+        flex-wrap:wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+
+<div class="logo">
+🍎 Fresh <span>Basket</span>
+</div>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">Home</a></li>
+<li><a href="#fruits">Fruits</a></li>
+<li><a href="#vegetables">Vegetables</a></li>
+<li><a href="#offers">Offers</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="nav-actions">
+<button class="icon-btn" onclick="openCart()">🛒</button>
+<button class="icon-btn" onclick="showToast('❤️ Wishlist opened!')">❤️</button>
+<button class="icon-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
+</div>
+
+</nav>
+</header>
+
+<section class="hero" id="home">
+
+<div class="floating f1">🍎</div>
+<div class="floating f2">🥦</div>
+<div class="floating f3">🍓</div>
+<div class="floating f4">🥕</div>
+
+<div class="hero-content">
+
+<div class="hero-badge">
+🌿 Freshness Delivered Daily
+</div>
+
+<h1>
+Fresh Fruits & <span>Vegetables</span>
+</h1>
+
+<p>
+Choose fresh, healthy and naturally delicious fruits and vegetables
+from our collection and get them delivered straight to your doorstep.
+</p>
+
+<div class="hero-buttons">
+<a href="#fruits">
+<button class="btn primary">Shop Fruits 🍎</button>
+</a>
+
+<a href="#vegetables">
+<button class="btn secondary">Shop Vegetables 🥦</button>
+</a>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+
+<div class="section-title">
+<small>WHY FRESH BASKET?</small>
+<h2>Freshness You Can Trust 💚</h2>
+<p>Quality products, fast delivery and healthy choices.</p>
+</div>
+
+<div class="features">
+
+<div class="feature">
+<div class="feature-icon">🍃</div>
+<h3>100% Fresh</h3>
+<p>Freshly selected fruits and vegetables every day.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🚚</div>
+<h3>Fast Delivery</h3>
+<p>Quick and safe delivery directly to your home.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🥬</div>
+<h3>Best Quality</h3>
+<p>Every product is carefully checked before delivery.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">💚</div>
+<h3>Healthy Choice</h3>
+<p>Fresh food for a healthier and happier lifestyle.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="fruits">
+
+<div class="section-title">
+<small>FRESH FROM FARM</small>
+<h2>Fresh Fruits 🍎</h2>
+<p>Sweet, juicy and naturally delicious.</p>
+</div>
+
+<div class="filter-box">
+<button class="filter active" onclick="filterProducts('all',this)">All</button>
+<button class="filter" onclick="filterProducts('fruit',this)">Fruits</button>
+<button class="filter" onclick="filterProducts('vegetable',this)">Vegetables</button>
+<button class="filter" onclick="filterProducts('under100',this)">Under ₹100</button>
+<button class="filter" onclick="filterProducts('rating',this)">Best Rated</button>
+</div>
+
+<div class="products" id="productGrid">
+
+<div class="product" data-type="fruit" data-price="120" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800&q=90" alt="Apple">
+<button class="wishlist" onclick="wishlist('Apple')">♡</button>
+</div>
+<div class="product-content">
+<h3>Apple 🍎</h3>
+<p class="description">Crispy and naturally sweet red apples.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹120 / kg</div>
+<select class="quantity">
+<option value="1">1 kg</option>
+<option value="2">2 kg</option>
+<option value="3">3 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Apple',120,'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="fruit" data-price="60" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=800&q=90" alt="Banana">
+<button class="wishlist" onclick="wishlist('Banana')">♡</button>
+</div>
+<div class="product-content">
+<h3>Banana 🍌</h3>
+<p class="description">Soft, naturally sweet yellow bananas.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹60 / dozen</div>
+<select class="quantity">
+<option value="1">1 dozen</option>
+<option value="2">2 dozen</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Banana',60,'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="fruit" data-price="100" data-rating="4">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=800&q=90" alt="Orange">
+<button class="wishlist" onclick="wishlist('Orange')">♡</button>
+</div>
+<div class="product-content">
+<h3>Orange 🍊</h3>
+<p class="description">Juicy oranges packed with freshness.</p>
+<div class="rating">★★★★☆</div>
+<div class="price">₹100 / kg</div>
+<select class="quantity">
+<option value="1">1 kg</option>
+<option value="2">2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Orange',100,'https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="fruit" data-price="180" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=90" alt="Strawberry">
+<button class="wishlist" onclick="wishlist('Strawberry')">♡</button>
+</div>
+<div class="product-content">
+<h3>Strawberry 🍓</h3>
+<p class="description">Fresh and juicy red strawberries.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹180 / box</div>
+<select class="quantity">
+<option value="1">1 box</option>
+<option value="2">2 boxes</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Strawberry',180,'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="fruit" data-price="140" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=800&q=90" alt="Grapes">
+<button class="wishlist" onclick="wishlist('Grapes')">♡</button>
+</div>
+<div class="product-content">
+<h3>Grapes 🍇</h3>
+<p class="description">Fresh green grapes with a sweet taste.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹140 / kg</div>
+<select class="quantity">
+<option value="1">1 kg</option>
+<option value="2">2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Grapes',140,'https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="fruit" data-price="160" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=90" alt="Mango">
+<button class="wishlist" onclick="wishlist('Mango')">♡</button>
+</div>
+<div class="product-content">
+<h3>Mango 🥭</h3>
+<p class="description">Sweet and delicious seasonal mangoes.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹160 / kg</div>
+<select class="quantity">
+<option value="1">1 kg</option>
+<option value="2">2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Mango',160,'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="fruit" data-price="50" data-rating="4">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=800&q=90" alt="Watermelon">
+<button class="wishlist" onclick="wishlist('Watermelon')">♡</button>
+</div>
+<div class="product-content">
+<h3>Watermelon 🍉</h3>
+<p class="description">Refreshing and juicy summer watermelon.</p>
+<div class="rating">★★★★☆</div>
+<div class="price">₹50 / kg</div>
+<select class="quantity">
+<option value="1">1 kg</option>
+<option value="2">2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Watermelon',50,'https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="fruit" data-price="90" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=800&q=90" alt="Pineapple">
+<button class="wishlist" onclick="wishlist('Pineapple')">♡</button>
+</div>
+<div class="product-content">
+<h3>Pineapple 🍍</h3>
+<p class="description">Fresh tropical pineapple with juicy flavour.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹90 / piece</div>
+<select class="quantity">
+<option value="1">1 piece</option>
+<option value="2">2 pieces</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Pineapple',90,'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="vegetables">
+
+<div class="section-title">
+<small>FARM FRESH</small>
+<h2>Fresh Vegetables 🥦</h2>
+<p>Healthy vegetables selected especially for you.</p>
+</div>
+
+<div class="products">
+
+<div class="product" data-type="vegetable" data-price="80" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=800&q=90" alt="Carrot">
+<button class="wishlist" onclick="wishlist('Carrot')">♡</button>
+</div>
+<div class="product-content">
+<h3>Carrot 🥕</h3>
+<p class="description">Crunchy and fresh farm carrots.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹80 / kg</div>
+<select class="quantity">
+<option>1 kg</option>
+<option>2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Carrot',80,'https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="vegetable" data-price="120" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=800&q=90" alt="Broccoli">
+<button class="wishlist" onclick="wishlist('Broccoli')">♡</button>
+</div>
+<div class="product-content">
+<h3>Broccoli 🥦</h3>
+<p class="description">Fresh green broccoli full of goodness.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹120 / kg</div>
+<select class="quantity">
+<option>1 kg</option>
+<option>2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Broccoli',120,'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="vegetable" data-price="70" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=800&q=90" alt="Tomato">
+<button class="wishlist" onclick="wishlist('Tomato')">♡</button>
+</div>
+<div class="product-content">
+<h3>Tomato 🍅</h3>
+<p class="description">Bright red and juicy fresh tomatoes.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹70 / kg</div>
+<select class="quantity">
+<option>1 kg</option>
+<option>2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Tomato',70,'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="vegetable" data-price="50" data-rating="4">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=800&q=90" alt="Potato">
+<button class="wishlist" onclick="wishlist('Potato')">♡</button>
+</div>
+<div class="product-content">
+<h3>Potato 🥔</h3>
+<p class="description">Fresh potatoes perfect for everyday cooking.</p>
+<div class="rating">★★★★☆</div>
+<div class="price">₹50 / kg</div>
+<select class="quantity">
+<option>1 kg</option>
+<option>2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Potato',50,'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="vegetable" data-price="60" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=800&q=90" alt="Onion">
+<button class="wishlist" onclick="wishlist('Onion')">♡</button>
+</div>
+<div class="product-content">
+<h3>Onion 🧅</h3>
+<p class="description">Fresh onions for delicious cooking.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹60 / kg</div>
+<select class="quantity">
+<option>1 kg</option>
+<option>2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Onion',60,'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="vegetable" data-price="40" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=800&q=90" alt="Spinach">
+<button class="wishlist" onclick="wishlist('Spinach')">♡</button>
+</div>
+<div class="product-content">
+<h3>Spinach 🥬</h3>
+<p class="description">Fresh leafy spinach for healthy meals.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹40 / bunch</div>
+<select class="quantity">
+<option>1 bunch</option>
+<option>2 bunches</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Spinach',40,'https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="vegetable" data-price="80" data-rating="4">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=800&q=90" alt="Sweet Corn">
+<button class="wishlist" onclick="wishlist('Sweet Corn')">♡</button>
+</div>
+<div class="product-content">
+<h3>Sweet Corn 🌽</h3>
+<p class="description">Fresh sweet corn with natural sweetness.</p>
+<div class="rating">★★★★☆</div>
+<div class="price">₹80 / piece</div>
+<select class="quantity">
+<option>1 piece</option>
+<option>2 pieces</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Sweet Corn',80,'https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+<div class="product" data-type="vegetable" data-price="100" data-rating="5">
+<div class="product-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=800&q=90" alt="Capsicum">
+<button class="wishlist" onclick="wishlist('Capsicum')">♡</button>
+</div>
+<div class="product-content">
+<h3>Capsicum 🫑</h3>
+<p class="description">Crispy and colourful fresh capsicum.</p>
+<div class="rating">★★★★★</div>
+<div class="price">₹100 / kg</div>
+<select class="quantity">
+<option>1 kg</option>
+<option>2 kg</option>
+</select>
+<button class="cart-btn" onclick="addToCart('Capsicum',100,'https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=300&q=80')">Add to Cart 🛒</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+
+<div class="section-title">
+<small>EXPLORE OUR COLLECTION</small>
+<h2>Shop By Category 🛍️</h2>
+<p>Choose your favourite fresh food category.</p>
+</div>
+
+<div class="categories">
+
+<div class="category">
+<img loading="lazy" src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=90" alt="Fresh Fruits">
+<div class="category-overlay"><h3>🍎 Fresh Fruits</h3></div>
+</div>
+
+<div class="category">
+<img loading="lazy" src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=90" alt="Vegetables">
+<div class="category-overlay"><h3>🥦 Fresh Vegetables</h3></div>
+</div>
+
+<div class="category">
+<img loading="lazy" src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=90" alt="Healthy Food">
+<div class="category-overlay"><h3>🌿 Healthy Choices</h3></div>
+</div>
+
+</div>
+</section>
+
+<section class="offer" id="offers">
+
+<div class="offer-content">
+
+<h2>Fresh Deals of the Day 🔥</h2>
+
+<p>
+Save more on your favourite fresh fruits and vegetables.
+Enjoy special offers while stocks last!
+</p>
+
+<div class="countdown">
+
+<div class="time">
+<strong id="hours">12</strong>
+<span>HOURS</span>
+</div>
+
+<div class="time">
+<strong id="minutes">30</strong>
+<span>MINUTES</span>
+</div>
+
+<div class="time">
+<strong id="seconds">00</strong>
+<span>SECONDS</span>
+</div>
+
+</div>
+
+<button class="btn secondary" onclick="showToast('🔥 Offer added to your shopping list!')">
+Shop Today's Deal
+</button>
+
+</div>
+</section>
+
+<section class="section" id="about">
+
+<div class="section-title">
+<small>ABOUT US</small>
+<h2>Why Choose Fresh Basket?</h2>
+</div>
+
+<div class="about">
+
+<div class="about-image">
+<img loading="lazy" src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=90" alt="Fresh Market">
+</div>
+
+<div class="about-content">
+
+<h2>Freshness Delivered With Love 💚</h2>
+
+<p>
+Fresh Basket is your trusted online destination for fresh fruits
+and vegetables. We carefully select quality produce and make
+healthy food easily available for everyone.
+</p>
+
+<p>
+From farm-fresh vegetables to juicy seasonal fruits, our goal is
+to bring natural freshness directly to your home.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<strong>10K+</strong>
+<span>Happy Customers</span>
+</div>
+
+<div class="stat">
+<strong>50+</strong>
+<span>Fresh Products</span>
+</div>
+
+<div class="stat">
+<strong>25+</strong>
+<span>Locations</span>
+</div>
+
+<div class="stat">
+<strong>4.9⭐</strong>
+<span>Rating</span>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+
+<div class="section-title">
+<small>SIMPLE PROCESS</small>
+<h2>How It Works 🛒</h2>
+<p>Fresh food delivered in four easy steps.</p>
+</div>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-icon">🛒</div>
+<h3>Choose Products</h3>
+<p>Select your favourite fruits and vegetables.</p>
+</div>
+
+<div class="step">
+<div class="step-icon">📦</div>
+<h3>Place Order</h3>
+<p>Add products to your cart and checkout.</p>
+</div>
+
+<div class="step">
+<div class="step-icon">🥬</div>
+<h3>We Pack Fresh</h3>
+<p>Our team carefully packs your products.</p>
+</div>
+
+<div class="step">
+<div class="step-icon">🚚</div>
+<h3>Get Delivered</h3>
+<p>Receive your fresh basket at home.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+
+<div class="section-title">
+<small>CUSTOMER LOVE</small>
+<h2>What Our Customers Say 💚</h2>
+</div>
+
+<div class="reviews">
+
+<div class="review">
+<div class="review-top">
+<div class="avatar">👩🏻</div>
+<div>
+<h3>Priya</h3>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+<p>
+"Fresh Basket always delivers fresh vegetables.
+The quality is excellent and the delivery is fast!"
+</p>
+</div>
+
+<div class="review">
+<div class="review-top">
+<div class="avatar">👩🏽</div>
+<div>
+<h3>Meena</h3>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+<p>
+"The fruits were fresh and perfectly packed.
+I especially loved the strawberries and mangoes."
+</p>
+</div>
+
+<div class="review">
+<div class="review-top">
+<div class="avatar">👨🏻</div>
+<div>
+<h3>Rahul</h3>
+<div class="review-stars">★★★★★</div>
+</div>
+</div>
+<p>
+"Fast delivery, good prices and excellent quality.
+I order from Fresh Basket every week."
+</p>
+</div>
+
+</div>
+</section>
+
+<section class="newsletter">
+
+<h2>Get Fresh Deals Every Week 💚</h2>
+
+<p>
+Subscribe to receive fresh product updates,
+special offers and healthy food tips.
+</p>
+
+<div class="newsletter-form">
+
+<input
+type="email"
+id="email"
+placeholder="Enter your email">
+
+<button onclick="subscribe()">
+Subscribe
+</button>
+
+</div>
+
+</section>
+
+<section class="section" id="contact">
+
+<div class="section-title">
+<small>GET IN TOUCH</small>
+<h2>Contact Fresh Basket 📞</h2>
+</div>
+
+<div class="contact">
+
+<div class="contact-card">
+
+<h3>Visit Us 💚</h3>
+
+<div class="contact-item">
+<strong>📍 Address</strong><br>
+Fresh Basket Market,<br>
+Erode, Tamil Nadu
+</div>
+
+<div class="contact-item">
+<strong>📞 Phone</strong><br>
++91 XXXXX XXXXX
+</div>
+
+<div class="contact-item">
+<strong>📧 Email</strong><br>
+freshbasket@example.com
+</div>
+
+<div class="contact-item">
+<strong>🕐 Opening Hours</strong><br>
+Monday – Saturday: 8:00 AM – 9:00 PM<br>
+Sunday: 8:00 AM – 6:00 PM
+</div>
+
+</div>
+
+<div class="contact-form">
+
+<h3>Send Us a Message 💌</h3>
+
+<input id="name" type="text" placeholder="Your Name">
+
+<input id="contactEmail" type="email" placeholder="Your Email">
+
+<input id="phone" type="tel" placeholder="Phone Number">
+
+<textarea id="message" placeholder="Your Message"></textarea>
+
+<button class="btn primary" onclick="sendMessage()">
+Send Message
+</button>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h2>🍎 Fresh Basket</h2>
+<p>
+Freshness delivered with love.
+Your trusted online destination for
+fresh fruits and vegetables.
+</p>
+</div>
+
+<div>
+<h3>Quick Links</h3>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#fruits">Fruits</a></li>
+<li><a href="#vegetables">Vegetables</a></li>
+<li><a href="#offers">Offers</a></li>
+</ul>
+</div>
+
+<div>
+<h3>Categories</h3>
+<ul>
+<li>Fresh Fruits</li>
+<li>Fresh Vegetables</li>
+<li>Organic Products</li>
+<li>Seasonal Products</li>
+</ul>
+</div>
+
+<div>
+<h3>Follow Us</h3>
+<ul>
+<li>📸 Instagram</li>
+<li>📘 Facebook</li>
+<li>▶️ YouTube</li>
+<li>🐦 Twitter</li>
+</ul>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Fresh Basket. All Rights Reserved.
+</div>
+
+</footer>
+
+<!-- CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+<div class="cart-header">
+<h2>🛒 Your Cart</h2>
+<button class="close-cart" onclick="closeCart()">✕</button>
+</div>
+
+<div id="cartItems"></div>
+
+<div class="cart-total">
+
+<div class="total-row">
+<span>Subtotal</span>
+<strong id="subtotal">₹0</strong>
+</div>
+
+<div class="total-row">
+<span>Delivery</span>
+<strong id="delivery">₹40</strong>
+</div>
+
+<div class="total-row">
+<span>Discount</span>
+<strong id="discount">₹0</strong>
+</div>
+
+<div class="total-row grand">
+<span>Total</span>
+<strong id="grandTotal">₹40</strong>
+</div>
+
+<button class="btn primary checkout" onclick="checkout()">
+Proceed to Checkout
+</button>
+
+</div>
+</div>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+↑
+</button>
+
+<script>
+
+let cart=[];
+
+/* MENU */
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("show");
+}
+
+/* TOAST */
+
+function showToast(message){
+
+    const old=document.querySelector(".toast");
+
+    if(old) old.remove();
+
+    const toast=document.createElement("div");
+
+    toast.className="toast";
+    toast.textContent=message;
+
+    document.body.appendChild(toast);
+
+    setTimeout(()=>{
+        toast.style.opacity="0";
+        toast.style.transition=".4s";
+
+        setTimeout(()=>{
+            toast.remove();
+        },400);
+
+    },2200);
+}
+
+/* WISHLIST */
+
+function wishlist(name){
+
+    showToast("❤️ "+name+" added to wishlist!");
+}
+
+/* CART */
+
+function addToCart(name,price,image){
+
+    const existing=cart.find(item=>item.name===name);
+
+    if(existing){
+        existing.quantity++;
+    }else{
+        cart.push({
+            name:name,
+            price:price,
+            image:image,
+            quantity:1
+        });
+    }
+
+    updateCart();
+
+    showToast("🛒 "+name+" added to cart!");
+
+}
+
+/* UPDATE CART */
+
+function updateCart(){
+
+    const container=document.getElementById("cartItems");
+
+    container.innerHTML="";
+
+    let subtotal=0;
+
+    cart.forEach((item,index)=>{
+
+        subtotal+=item.price*item.quantity;
+
+        const div=document.createElement("div");
+
+        div.className="cart-item";
+
+        div.innerHTML=`
+
+        <img src="${item.image}" alt="${item.name}">
+
+        <div class="cart-item-info">
+
+            <h4>${item.name}</h4>
+
+            <p>
+            ₹${item.price} × ${item.quantity}
+            </p>
+
+        </div>
+
+        <button
+        class="remove-item"
+        onclick="removeCart(${index})">
+        ✕
+        </button>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+    let delivery=cart.length ? 40 : 0;
+
+    let discount=subtotal>=500 ? 50 : 0;
+
+    let total=subtotal+delivery-discount;
+
+    document.getElementById("subtotal").textContent="₹"+subtotal;
+    document.getElementById("delivery").textContent="₹"+delivery;
+    document.getElementById("discount").textContent="₹"+discount;
+    document.getElementById("grandTotal").textContent="₹"+total;
+
+}
+
+/* REMOVE */
+
+function removeCart(index){
+
+    const name=cart[index].name;
+
+    cart.splice(index,1);
+
+    updateCart();
+
+    showToast("🗑️ "+name+" removed from cart.");
+
+}
+
+/* OPEN CART */
+
+function openCart(){
+
+    document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+}
+
+/* CLOSE CART */
+
+function closeCart(){
+
+    document
+    .getElementById("cartPanel")
+    .classList.remove("open");
+
+}
+
+/* CHECKOUT */
+
+function checkout(){
+
+    if(cart.length===0){
+
+        showToast("🛒 Your cart is empty!");
+
+        return;
+    }
+
+    showToast("🎉 Order placed successfully!");
+
+    cart=[];
+
+    updateCart();
+
+    setTimeout(()=>{
+        closeCart();
+    },800);
+
+}
+
+/* FILTER */
+
+function filterProducts(type,button){
+
+    document
+    .querySelectorAll(".filter")
+    .forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    document
+    .querySelectorAll(".product")
+    .forEach(product=>{
+
+        const productType=
+        product.dataset.type;
+
+        const price=
+        Number(product.dataset.price);
+
+        const rating=
+        Number(product.dataset.rating);
+
+        let show=false;
+
+        if(type==="all"){
+            show=true;
+        }
+
+        if(type==="fruit" &&
+           productType==="fruit"){
+            show=true;
+        }
+
+        if(type==="vegetable" &&
+           productType==="vegetable"){
+            show=true;
+        }
+
+        if(type==="under100" &&
+           price<=100){
+            show=true;
+        }
+
+        if(type==="rating" &&
+           rating>=5){
+            show=true;
+        }
+
+        product.style.display=
+        show ? "" : "none";
+
+    });
+
+}
+
+/* NEWSLETTER */
+
+function subscribe(){
+
+    const email=
+    document.getElementById("email").value.trim();
+
+    if(!email){
+
+        showToast("📧 Please enter your email!");
+
+        return;
+    }
+
+    const valid=
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    .test(email);
+
+    if(!valid){
+
+        showToast("❌ Please enter a valid email!");
+
+        return;
+    }
+
+    showToast("💚 Welcome to Fresh Basket!");
+
+    document.getElementById("email").value="";
+
+}
+
+/* CONTACT */
+
+function sendMessage(){
+
+    const name=
+    document.getElementById("name").value.trim();
+
+    const email=
+    document.getElementById("contactEmail").value.trim();
+
+    const message=
+    document.getElementById("message").value.trim();
+
+    if(!name || !email || !message){
+
+        showToast("⚠️ Please fill all required fields!");
+
+        return;
+    }
+
+    showToast("💌 Message sent successfully!");
+
+    document.getElementById("name").value="";
+    document.getElementById("contactEmail").value="";
+    document.getElementById("phone").value="";
+    document.getElementById("message").value="";
+
+}
+
+/* COUNTDOWN */
+
+let totalSeconds=
+12*60*60+30*60;
+
+function countdown(){
+
+    if(totalSeconds<=0){
+        totalSeconds=
+        12*60*60+30*60;
+    }
+
+    const hours=
+    Math.floor(totalSeconds/3600);
+
+    const minutes=
+    Math.floor((totalSeconds%3600)/60);
+
+    const seconds=
+    totalSeconds%60;
+
+    document.getElementById("hours")
+    .textContent=
+    String(hours).padStart(2,"0");
+
+    document.getElementById("minutes")
+    .textContent=
+    String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds")
+    .textContent=
+    String(seconds).padStart(2,"0");
+
+    totalSeconds--;
+
+}
+
+countdown();
+
+setInterval(countdown,1000);
+
+/* BACK TOP */
+
+window.addEventListener("scroll",()=>{
+
+    const btn=
+    document.getElementById("backTop");
+
+    if(window.scrollY>500){
+        btn.classList.add("show");
+    }else{
+        btn.classList.remove("show");
+    }
+
+});
+
+</script>
+
+</body>
+</html>
