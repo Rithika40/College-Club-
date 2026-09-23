@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in · College Club Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="login-body">
+  <div class="login-shell">
+    <section class="hero">
+      <div class="brand-mark">🎓</div>
+      <div class="eyebrow">Campus operations</div>
+      <h1>College Club Management System</h1>
+      <p>One place to manage clubs, members, events, registrations, attendance, notices, and reports.</p>
+      <ul>
+        <li><span>✓</span> Clubs and members</li>
+        <li><span>✓</span> Events and attendance</li>
+        <li><span>✓</span> Dashboard and reports</li>
+      </ul>
+    </section>
+    <section class="login-panel">
+      <div class="eyebrow">Welcome back</div>
+      <h2>Sign in</h2>
+      <p class="sub">Use your assigned User1 or User2 account.</p>
+      <div id="error" class="alert alert-error"></div>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" name="username" autocomplete="username" required placeholder="User1 or User2">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Enter password">
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Continue</button>
+      </form>
+      <div class="hint">
+        Demo accounts<br>
+        <strong>User1</strong> / password123 · <strong>User2</strong> / password123
+      </div>
+    </section>
+  </div>
+  <script src="/static/api.js"></script>
+  <script>
+    if (CCMS.token() && !CCMS.idleExpired()) {
+      window.location.replace("/app");
+    }
+    const form = document.getElementById("login-form");
+    const error = document.getElementById("error");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      error.classList.remove("show");
+      try {
+        const data = await CCMS.api("/auth/login", {
+          method: "POST",
+          body: JSON.stringify({
+            username: document.getElementById("username").value.trim(),
+            password: document.getElementById("password").value
+          })
+        });
+        CCMS.setSession(data);
+        window.location.href = "/app";
+      } catch (err) {
+        error.textContent = err.message;
+        error.classList.add("show");
+      }
+    });
+  </script>
+</body>
+</html>

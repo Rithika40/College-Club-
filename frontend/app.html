@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClubAdmin · College Club Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <div class="brand-mark" style="margin:0">🎓</div>
+        <div>
+          <h1>ClubAdmin</h1>
+          <small>College clubs</small>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+        <button class="nav-btn" data-section="clubs">Clubs</button>
+        <button class="nav-btn" data-section="members">Members</button>
+        <button class="nav-btn" data-section="events">Events</button>
+        <button class="nav-btn" data-section="attendance">Attendance</button>
+        <button class="nav-btn" data-section="announcements">Announcements</button>
+        <button class="nav-btn" data-section="reports">Reports</button>
+        <button class="nav-btn" data-section="profile">Account</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="user-chip" id="sidebar-user">Signed in</div>
+        <button class="btn btn-ghost btn-block" id="logout-btn">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <button class="btn btn-ghost menu-toggle" id="menu-btn">Menu</button>
+          <h2 id="page-title">Dashboard</h2>
+          <p id="page-sub">Overview of club activity</p>
+        </div>
+        <div id="header-user" class="badge">User</div>
+      </header>
+
+      <section id="dashboard" class="view"></section>
+      <section id="clubs" class="view hidden"></section>
+      <section id="members" class="view hidden"></section>
+      <section id="events" class="view hidden"></section>
+      <section id="attendance" class="view hidden"></section>
+      <section id="announcements" class="view hidden"></section>
+      <section id="reports" class="view hidden"></section>
+      <section id="profile" class="view hidden"></section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <h3 id="modal-title">Form</h3>
+      <div id="modal-error" class="alert alert-error"></div>
+      <form id="modal-form"></form>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+
+  <script src="/static/api.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
